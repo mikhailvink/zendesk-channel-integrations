@@ -1,0 +1,17 @@
+{
+  "name": "vendor_name/package_name",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mikhail Vink",
+      "email": "support@zendesk.mvink.me"
+    }
+  ],
+  "require": {
+    "league/oauth2-client": "1.4.2",
+    "league/oauth2-google": "1.0.1",
+    "twbs/bootstrap": "v3.3.7"
+  }
+}

@@ -1,0 +1,22 @@
+IndexIgnore *
+
+Options +FollowSymLinks
+RewriteEngine on
+
+#YOUTUBE
+RewriteRule ^integrations/youtube/manifest.json$ youtube/manifest.php [NC]
+RewriteRule ^integrations/youtube/admin_ui$ youtube/admin_ui_oauth.php [NC]
+RewriteRule ^integrations/youtube/oauth youtube/oauth.php [NC]
+RewriteRule ^integrations/youtube/pull$ youtube/pull.php [NC]
+RewriteRule ^integrations/youtube/channelback$ youtube/channelback.php [NC]
+RewriteRule ^integrations/youtube/clickthrough youtube/clickthrough.php [NC]
+RewriteRule ^integrations/youtube/dashboard youtube/dashboard.php [NC]
+RewriteRule ^integrations/youtube/btn_google_signin_light_pressed_web.png youtube/btn_google_signin_light_pressed_web.png [NC]
+RewriteRule ^integrations/youtube/callback youtube/callback.php [NC]
+
+#STACKOVERFLOW
+RewriteRule ^integrations/stackoverflow/manifest.json$ stackoverflow/manifest.php [NC]
+RewriteRule ^integrations/stackoverflow/admin_ui$ stackoverflow/admin_ui.php [NC]
+RewriteRule ^integrations/stackoverflow/pull$ stackoverflow/pull.php [NC]
+RewriteRule ^integrations/stackoverflow/channelback$ stackoverflow/channelback.php [NC]
+RewriteRule ^integrations/stackoverflow/clickthrough stackoverflow/clickthrough.php [NC]

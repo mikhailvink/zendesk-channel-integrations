@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: mikhailvink
+ * Date: 02/01/2017
+ * Time: 22:20
+ */
+
+$globalConfig=array();
+
+$globalConfig['Domain']='';
+$globalConfig['MailChimp_Auth']='';
+$globalConfig['MailChimp_List']='';
+$globalConfig['YouTubeAPIKey']='';
+$globalConfig['YouTubeOAuthClientID']='';
+$globalConfig['YouTubeOAuthClientSecret']='';
+$globalConfig['SOAPIKey']='';
+
