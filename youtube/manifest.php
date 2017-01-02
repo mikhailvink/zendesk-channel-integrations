@@ -24,4 +24,4 @@ $manifest_array = array(
     )
 );
 echo json_encode($manifest_array);
-write_log("Manifest has been requested. Response: ".json_encode($manifest_array));
+write_log("YouTube manifest has been requested. Response: ".json_encode($manifest_array));
