@@ -1,0 +1,13 @@
+{
+  "name": "Zendesk Stack Exchange Channel App",
+  "author": {
+    "name": "Mikhail Vink",
+    "email": "support@zendesk.mvink.me",
+    "url": "https://zendesk.mvink.me"
+  },
+  "defaultLocale": "en",
+  "private": false,
+  "version": "0.1.0",
+  "singleInstall": true,
+  "requirementsOnly": true
+}

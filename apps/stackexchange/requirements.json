@@ -1,0 +1,7 @@
+{
+  "channel_integrations": {
+    "zendesk_stackexchange_channel": {
+      "manifest_url": "https://zendesk.mvink.me/integrations/stackexchange/manifest.json"
+    }
+  }
+}

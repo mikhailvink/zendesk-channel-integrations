@@ -1,0 +1,7 @@
+{
+  "channel_integrations": {
+    "zendesk_youtube_channel": {
+      "manifest_url": "https://zendesk.mvink.me/integrations/youtube/manifest.json"
+    }
+  }
+}
