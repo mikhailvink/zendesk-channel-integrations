@@ -14,5 +14,5 @@ $globalConfig['MailChimp_List']='';
 $globalConfig['YouTubeAPIKey']='';
 $globalConfig['YouTubeOAuthClientID']='';
 $globalConfig['YouTubeOAuthClientSecret']='';
-$globalConfig['SOAPIKey']='';
+$globalConfig['SEAPIKey']='';
 
