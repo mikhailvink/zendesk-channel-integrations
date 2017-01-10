@@ -129,7 +129,6 @@ $(\'#login-button\').click(function() {
         scope: [\'no_expiry\'';
         if ($_POST['stackexchange_type']=='full') echo ", 'write_access'";
         echo '],
-        redirect_uri: \'https://zendesk.mvink.me/integrations/stackexchange/proxy\',
         networkUsers: true
     });
 });
@@ -224,19 +223,21 @@ $(document).ready(function () {
 <br>(you can find more information at <a href="http://stackexchange.com/sites" target="_blank">http://stackexchange.com/sites</a>)<br/>
 <select name="site" id="site">
 ';
-    $url = 'https://api.stackexchange.com/2.2/sites?key='.$globalConfig['SEAPIKey'];
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 900);
-    curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
-    $data = curl_exec($ch);
-    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    for ($i=1;$i<=4;$i++) {
+        $url = 'https://api.stackexchange.com/2.2/sites?pagesize=100&page='.$i.'&key=' . $globalConfig['SEAPIKey'];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 900);
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+        $data = curl_exec($ch);
+        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-    foreach (json_decode($data)->items as $k){
-        if ($k->api_site_parameter==$metadata['site'])
-        echo "<option value='".$k->api_site_parameter."' selected>".$k->name." (".$k->site_url.")</option>\r\n";
-        else echo "<option value='".$k->api_site_parameter."'>".$k->name." (".$k->site_url.")</option>\r\n";
+        foreach (json_decode($data)->items as $k) {
+            if ($k->api_site_parameter == $metadata['site'])
+                echo "<option value='" . $k->api_site_parameter . "' selected>" . $k->name . " (" . $k->site_url . ")</option>\r\n";
+            else echo "<option value='" . $k->api_site_parameter . "'>" . $k->name . " (" . $k->site_url . ")</option>\r\n";
+        }
     }
 
 echo '</select>
