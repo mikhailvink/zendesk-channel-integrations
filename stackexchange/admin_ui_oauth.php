@@ -8,10 +8,9 @@ require_once 'logs.php';
 
 if (isset($_POST['save']) and $_POST['save'] == '1') {
     if ($_POST['save'] == '1' and $_POST['save_at']!='1') $_SESSION['form_data'] = $_POST;
-    else $_SESSION['access_token'] = $_POST['access_token'];
 
-    if ($_POST['access_token']) {
-        $url = 'https://api.stackexchange.com/2.2/access-tokens/'.$_POST['access_token'].'?key='.$globalConfig['SEAPIKey'];
+    if ($_SESSION['access_token']) {
+        $url = 'https://api.stackexchange.com/2.2/access-tokens/'.$_SESSION['access_token'].'?key='.$globalConfig['SEAPIKey'];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -89,71 +88,35 @@ if (isset($_POST['save']) and $_POST['save'] == '1') {
             form.submit();
           </script>
         ';
-        //unset($_SESSION['access_token'], $_SESSION['state']);
+        unset($_SESSION['access_token'], $_SESSION['oauth2state']);
         echo "The information has been saved to Zendesk channel information";
     } else {
         echo '
-<script type=\'text/javascript\' src=\'https://api.stackexchange.com/js/2.0/all.js\'></script>
-        <script type=\'text/javascript\'>
-// For simplicity, we\'re using jQuery for some things
-//   However, the library has no jQuery dependency
-$(function(){
-// Initialize library
-SE.init({ 
-    // Parameters obtained by registering an app, these are specific to the SE
-    //   documentation site
-    clientId: 8723, 
-    key: \''.$globalConfig['SEAPIKey'].'\', 
-    // Used for cross domain communication, it will be validated
-    channelUrl: \'https://'.$globalConfig['Domain'].'/integrations/stackexchange/proxy\',
-    // Called when all initialization is finished
-    complete: function(data) {}
-});
-
-// Attach click handler to login button
-$(\'#login-button\').click(function() {
-    // Make the authentication call, note that being in an onclick handler
-    //   is important; most browsers will hide windows opened without a
-    //   \'click blessing\'
-    SE.authenticate({
-        success: function(data) { 
-            alert(
-                \'User Authorized with account id = \' + 
-                data.networkUsers[0].account_id + \', got access token = \' + 
-                data.accessToken
-            ); 
-        },
-        error: function(data) { 
-            alert(\'An error occurred:\n\' + data.errorName + \'\n\' + data.errorMessage); 
-        },
-        scope: [\'no_expiry\'';
-        if ($_POST['stackexchange_type']=='full') echo ", 'write_access'";
-        echo '],
-        networkUsers: true
+        <script>
+        $(document).ready(function(){
+    var win;
+    var checkConnect;
+    var $connect = $("#stackexchange_auth");
+    var oAuthURL = "https://'.$globalConfig['Domain'].'/integrations/stackexchange/oauth";
+    $connect.click(function() {
+        win = window.open(oAuthURL, \'StackExchangeAuth\', \'width=972,height=660,modal=yes,alwaysRaised=yes,toolbar=no,location=no,status=no,menubar=no\');
     });
-});
+
+    checkConnect = setInterval(function() {
+        if (!win || !win.closed) return;
+        clearInterval(checkConnect);
+        window.location.reload();
+    }, 100);
 });
 </script>
         ';
-        echo '<div style="text-align: center;padding:20px;"><span style="margin-top:25px; font-weight: bold; ">Sign in with</span><br/><a href="#" id="login-button"><img src="https://'.$globalConfig['Domain'].'/integrations/stackexchange/se-logo.png" alt="Sign in with Stack Exchange" width="191"></a></div>';
+
+        echo '<div style="text-align: center;padding:20px;">
+<span style="margin-top:25px; font-weight: bold; ">1. Make sure you are logged in to Stack Exchange in the same browser window! (work-arounding limitations)</span><br/><br/>
+<span style="margin-top:25px; font-weight: bold; ">2. Sign in with</span><br/>
+<a href="#" id="stackexchange_auth"><img src="https://'.$globalConfig['Domain'].'/integrations/stackexchange/se-logo.png" alt="Sign in with Stack Exchange" width="191"></a></div>';
         write_log("New OAuth via Stack Exchange");
 
-        echo '<form action="https://'.$globalConfig['Domain'].'/integrations/stackexchange/admin_ui?save=1" method="post" enctype="application/x-www-form-urlencoded" id="submit_access_token">
-            <input type="hidden"
-                   name="save"
-                   value="1">
-                   <input type="hidden"
-                   name="save_at"
-                   value="1">
-                   <input type="hidden"
-                   name="access_token"
-                   value="5Rq04I4ho6gn*QTIjIKySA))">
-          </form>
-          <script type="text/javascript">
-            // Post the form
-            var form = document.forms[\'submit_access_token\'];
-            form.submit();
-          </script>';
     }
 
 } else {
@@ -221,24 +184,16 @@ $(document).ready(function () {
 <div class="form-group">
 <label class="control-label">Stack Exchange Site: <span style="color:red;">*</span></label>
 <br>(you can find more information at <a href="http://stackexchange.com/sites" target="_blank">http://stackexchange.com/sites</a>)<br/>
-<select name="site" id="site">
+<select name="site" id="site" style="width:410px;">
 ';
-    for ($i=1;$i<=4;$i++) {
-        $url = 'https://api.stackexchange.com/2.2/sites?pagesize=100&page='.$i.'&key=' . $globalConfig['SEAPIKey'];
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 900);
-        curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
-        $data = curl_exec($ch);
-        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        foreach (json_decode($data)->items as $k) {
+    $data=json_decode(file_get_contents('stackexchange_sites.json'));
+
+        foreach ($data as $k) {
             if ($k->api_site_parameter == $metadata['site'])
                 echo "<option value='" . $k->api_site_parameter . "' selected>" . $k->name . " (" . $k->site_url . ")</option>\r\n";
             else echo "<option value='" . $k->api_site_parameter . "'>" . $k->name . " (" . $k->site_url . ")</option>\r\n";
         }
-    }
 
 echo '</select>
 </div>
@@ -271,7 +226,7 @@ echo '</select>
 <div class="form-group">
 <label class="control-label" for="debugging">Send advanced debugging data to app developers:</label>
 <input type="checkbox" id="debugging" name="debugging" value="true"';
-    if ($metadata['debugging'] == "true") echo 'checked';
+    if ($metadata['debugging'] == "true") echo ' checked';
     echo '>
 </div>
 </div>

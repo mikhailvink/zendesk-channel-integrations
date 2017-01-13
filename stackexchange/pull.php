@@ -58,7 +58,7 @@ foreach (array_reverse($questions->items) as $item) {
         //$external_id=(string)rand(1,10000000);
 
         $temp_array = array(
-            "external_id" => $external_id,
+            "external_id" => $site."_".$external_id,
             "message" => strip_tags($item->body_markdown),
             "html_message" => $item->body,
             "created_at" => date("Y-m-d\TH:i:s\Z", $item->creation_date),
@@ -73,11 +73,11 @@ foreach (array_reverse($questions->items) as $item) {
 
         foreach ($item->answers as $answer){
             $temp_array = array(
-                "external_id" => (string)$answer->answer_id,
+                "external_id" => $site."_".(string)$answer->answer_id,
                 "message" => strip_tags($answer->body_markdown),
                 "html_message" => $answer->body,
                 "created_at" => date("Y-m-d\TH:i:s\Z", $answer->creation_date),
-                "parent_id" => $external_id,
+                "parent_id" => $site."_".$external_id,
                 "author" => array(
                     "external_id" => (string)$answer->owner->user_id,
                     "name" => html_entity_decode($answer->owner->display_name,ENT_QUOTES),

@@ -7,7 +7,13 @@ require 'header.html';
 require 'footer.html';
 
     if ($_GET['external_id']) {
-        $redirect_to_comment = "https://stackoverflow.com/a/" . $_GET['external_id'];
+        $site='stackoverflow';
+
+        if (strpos($_GET['external_id'],"_")){
+            $site=explode("_",$_GET['external_id'])[0];
+        }
+
+        $redirect_to_comment = "https://".$site.".com/a/" . explode("_",$_GET['external_id'])[1];
         header("Location: " . $redirect_to_comment);
     }
 
