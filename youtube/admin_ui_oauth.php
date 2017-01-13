@@ -116,7 +116,10 @@ if (isset($_POST['save']) and $_POST['save'] == '1') {
 });
 </script>
         ';
-        echo '<div style="text-align: center;padding:20px;"><a href="#" id="youtube_auth"><img src="https://'.$globalConfig['Domain'].'/integrations/youtube/btn_google_signin_light_pressed_web.png" alt="Sign in with Google" width="191"></a></div>';
+        echo '<div style="text-align: center;padding:20px;">
+<span style="margin-top:25px; font-weight: bold; ">1. Make sure you are logged in to Google in the same browser window! (work-arounding limitations)</span><br/><br/>
+<span style="margin-top:25px; font-weight: bold; ">2. Sign in with:</span><br/>
+<a href="#" id="youtube_auth"><img src="https://'.$globalConfig['Domain'].'/integrations/youtube/btn_google_signin_light_pressed_web.png" alt="Sign in with Google" width="191"></a></div>';
         write_log("New OAuth via Google YouTube");
     }
 
