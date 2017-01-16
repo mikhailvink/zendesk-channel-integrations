@@ -1,14 +1,16 @@
-# App name
+# Channel Integration for Stack Exchange
 
-[brief description of the app]
+Integrate questions from any Stack Exchange website (such as Stack Overflow or Server Fault) by tag into your Zendesk turning them into tickets. Then simply address them taking advantage of Zendesk's views, macros, and triggers.
 
-### The following information is displayed:
+### Features:
 
-* info1
-* info2
-* info3
+* All Questions by Tag: This integrations creates tickets for all questions by specific Stack Exchange tag.
+* Clickthrough support: Links to Stack Exchange questions and answers on their source web sites are added to every ticket created by integration.
+* Channelback support: Answer from Zendesk are automatically replicated in Stack Exchange as answers from your name (option to be selected in settings, single name per tag).
+* Up to 100 tickets every 2 minutes: Integration is capable of turning 100 Stack Exchange questions/answers into tickets every 2 minutes (per configured tag, answers are added to the questions they belong to).
+* Multiple tags & websites supported: You can enable this integration to work with any number of Stack Exchange websites and tags at a time.
+* Easy installation: Just install the application from Zendesk Marketplace to your instance, add contact information and website/tag - that's it!
 
-Please submit bug reports to [Insert Link](). Pull requests are welcome.
+More information in [FAQ](https://zendesk.mvink.me/faq.htm)
 
-### Screenshot(s):
-[put your screenshots down here.]
+Please submit bug reports to [support@zendesk.mvink.me](mailto:support@zendesk.mvink.me)

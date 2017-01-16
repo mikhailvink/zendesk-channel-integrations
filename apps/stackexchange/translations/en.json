@@ -1,7 +1,7 @@
 {
   "app": {
     "description": "Integrate Stack Exchange posts by tag with your Zendesk as a separate channel.",
-    "name": "Stack Exchange Integration"
+    "name": "Channel Integration for Stack Exchange"
   },
   "loading": "Welcome to the Stack Exchange Integration App",
   "fetch": {
