@@ -58,14 +58,24 @@ foreach (array_reverse($questions->items) as $item) {
         //$external_id=(string)rand(1,10000000);
 
         $temp_array = array(
-            "external_id" => $site."_".$external_id,
+            "external_id" => $site . "_" . $external_id,
             "message" => strip_tags($item->body_markdown),
             "html_message" => $item->body,
             "created_at" => date("Y-m-d\TH:i:s\Z", $item->creation_date),
             "author" => array(
                 "external_id" => (string)$item->owner->user_id,
-                "name" => html_entity_decode($item->owner->display_name,ENT_QUOTES),
+                "name" => html_entity_decode($item->owner->display_name, ENT_QUOTES),
                 "image_url" => $item->owner->profile_image
+            ),
+            "fields" => array(
+                array(
+                    "id" => "subject",
+                    "value" => $item->title
+                ),
+                array(
+                    "id" => "type",
+                    "value" => "question"
+                )
             ),
             "allow_channelback" => $allow_channelback
         );
