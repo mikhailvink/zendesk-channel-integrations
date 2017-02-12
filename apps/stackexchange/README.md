@@ -1,4 +1,4 @@
-# Channel Integration for Stack Exchange
+# Stack for Zendesk
 
 Integrate questions from any Stack Exchange website (such as Stack Overflow or Server Fault) by tag into your Zendesk turning them into tickets. Then simply address them taking advantage of Zendesk's views, macros, and triggers.
 
