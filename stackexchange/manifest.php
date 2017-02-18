@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 require_once '../config.php';
 require_once 'logs.php';
 $manifest_array = array(
-    "name" => "Stack Exchange",
+    "name" => "Stack for Zendesk",
     "id" => "zendesk-stack-exchange-integration",
     "author" => "Mikhail Vink",
     "version" => "v0.1.0",

@@ -12,7 +12,8 @@ require_once 'logs.php';
 header('Content-type: application/json; charset=utf-8');
 
 if (!isset($_POST['metadata'])) {
-
+        $_POST['metadata']=$globalConfig['TestMetaDataYT'];
+        $_POST['state']=$globalConfig['TestStateYT'];
 }
 
 $metadata = json_decode(urldecode($_POST['metadata']), true);

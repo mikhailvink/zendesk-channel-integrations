@@ -11,7 +11,8 @@ require_once 'logs.php';
 header('Content-type: application/json; charset=utf-8');
 
 if (!isset($_POST['metadata'])) {
-
+$_POST['metadata']=$globalConfig['TestMetaDataSE'];
+$_POST['state']=$globalConfig['TestStateSE'];
 }
 
 $metadata = json_decode(urldecode($_POST['metadata']), true);
@@ -65,7 +66,7 @@ foreach (array_reverse($questions->items) as $item) {
             "author" => array(
                 "external_id" => (string)$item->owner->user_id,
                 "name" => html_entity_decode($item->owner->display_name, ENT_QUOTES),
-                "image_url" => $item->owner->profile_image
+                "image_url" => ""//$item->owner->profile_image
             ),
             "fields" => array(
                 array(
@@ -91,7 +92,7 @@ foreach (array_reverse($questions->items) as $item) {
                 "author" => array(
                     "external_id" => (string)$answer->owner->user_id,
                     "name" => html_entity_decode($answer->owner->display_name,ENT_QUOTES),
-                    "image_url" => $answer->owner->profile_image
+                    "image_url" => ""//$answer->owner->profile_image
                 ),
                 "allow_channelback" => $allow_channelback
             );
