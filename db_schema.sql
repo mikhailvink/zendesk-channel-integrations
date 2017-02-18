@@ -1,0 +1,32 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+CREATE TABLE IF NOT EXISTS `zendesk_integrations_logs_app` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CREATEDON` datetime NOT NULL,
+  `IP` varchar(255) NOT NULL,
+  `URL` varchar(255) NOT NULL,
+  `MESSAGE` longtext NOT NULL,
+  `TYPE` varchar(255) NOT NULL,
+  `SUBDOMAIN` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ID` (`ID`),
+  KEY `SUBDOMAIN` (`SUBDOMAIN`),
+  KEY `TYPE` (`TYPE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `zendesk_integrations_logs_callback` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CREATEDON` datetime NOT NULL,
+  `IP` varchar(255) NOT NULL,
+  `URL` varchar(255) NOT NULL,
+  `CALLBACK` longtext NOT NULL,
+  `TYPE` varchar(255) NOT NULL,
+  `SUBDOMAIN` varchar(255) NOT NULL,
+  `EVENT_TYPE_ID` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `ID` (`ID`),
+  KEY `EVENT_TYPE_ID` (`EVENT_TYPE_ID`),
+  KEY `SUBDOMAIN` (`SUBDOMAIN`),
+  KEY `TYPE` (`TYPE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

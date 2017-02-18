@@ -7,66 +7,150 @@
  */
 require_once '../config.php';
 
-function write_log($message) {
-    if (!is_file("../logs/stackexchange_".date("Y_m_d").".log")){
-        $fh = fopen("../logs/stackexchange_".date("Y_m_d").".log", 'w');
-        fclose($fh);
+function write_log($message)
+{
+    global $globalConfig;
+
+    if ($globalConfig['LogsDBType'] == '1' or $globalConfig['LogsDBType'] == '3') {
+        if (!is_file("../logs/stackexchange_" . date("Y_m_d") . ".log")) {
+            $fh = fopen("../logs/stackexchange_" . date("Y_m_d") . ".log", 'w');
+            fclose($fh);
+        }
+        $logfile = "../logs/stackexchange_" . date("Y_m_d") . ".log";
+
+        // Get time of request
+        if (($time = $_SERVER['REQUEST_TIME']) == '') {
+            $time = time();
+        }
+
+        // Get IP address
+        if (($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
+            $remote_addr = "REMOTE_ADDR_UNKNOWN";
+        }
+
+        // Get requested script
+        if (($request_uri = $_SERVER['REQUEST_URI']) == '') {
+            $request_uri = "REQUEST_URI_UNKNOWN";
+        }
+
+        // Format the date and time
+        $date = date("Y-m-d H:i:s", $time);
+
+        // Append to the log file
+        if ($fd = @fopen($logfile, "a")) {
+            fputcsv($fd, array($date, $remote_addr, $request_uri, $message));
+            fclose($fd);
+        }
     }
-    $logfile="../logs/stackexchange_".date("Y_m_d").".log";
 
-    // Get time of request
-    if( ($time = $_SERVER['REQUEST_TIME']) == '') {
-        $time = time();
-    }
+    if ($globalConfig['LogsDBType'] == '2' or $globalConfig['LogsDBType'] == '3') {
 
-    // Get IP address
-    if( ($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
-        $remote_addr = "REMOTE_ADDR_UNKNOWN";
-    }
+        // Get time of request
+        if (($time = $_SERVER['REQUEST_TIME']) == '') {
+            $time = time();
+        }
 
-    // Get requested script
-    if( ($request_uri = $_SERVER['REQUEST_URI']) == '') {
-        $request_uri = "REQUEST_URI_UNKNOWN";
-    }
+        // Get IP address
+        if (($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
+            $remote_addr = "REMOTE_ADDR_UNKNOWN";
+        }
 
-    // Format the date and time
-    $date = date("Y-m-d H:i:s", $time);
+        // Get requested script
+        if (($request_uri = $_SERVER['REQUEST_URI']) == '') {
+            $request_uri = "REQUEST_URI_UNKNOWN";
+        }
 
-    // Append to the log file
-    if($fd = @fopen($logfile, "a")) {
-        fputcsv($fd, array($date, $remote_addr, $request_uri, $message));
-        fclose($fd);
+        // Format the date and time
+        $date = date("Y-m-d H:i:s", $time);
+
+        $mysqli = new mysqli($globalConfig['LogsDBHost'], $globalConfig['LogsDBUser'], $globalConfig['LogsDBPassword'], $globalConfig['LogsDBName'], $globalConfig['LogsDBPort']);
+
+        $mysqli->query("INSERT INTO  zendesk_integrations_logs_app (
+`CREATEDON` ,
+`IP` ,
+`URL` ,
+`MESSAGE` ,
+`TYPE` ,
+`SUBDOMAIN`
+)
+VALUES (
+'" . $date . "',  '" . $remote_addr . "',  '" . $request_uri . "', '" . $message . "',  'StackExchange',  '');");
+
+        $mysqli->close();
     }
 }
 
-function write_log_callback($message) {
-    if (!is_file("../logs_callback/stackexchange_".date("Y_m_d").".log")){
-        $fh = fopen("../logs_callback/stackexchange_".date("Y_m_d").".log", 'w');
-        fclose($fh);
-    }
-    $logfile="../logs_callback/stackexchange_".date("Y_m_d").".log";
+function write_log_callback($message)
+{
+    global $globalConfig;
 
-    // Get time of request
-    if( ($time = $_SERVER['REQUEST_TIME']) == '') {
-        $time = time();
+    if ($globalConfig['LogsDBType'] == '1' or $globalConfig['LogsDBType'] == '3') {
+        if (!is_file("../logs_callback/stackexchange_" . date("Y_m_d") . ".log")) {
+            $fh = fopen("../logs_callback/stackexchange_" . date("Y_m_d") . ".log", 'w');
+            fclose($fh);
+        }
+        $logfile = "../logs_callback/stackexchange_" . date("Y_m_d") . ".log";
+
+        // Get time of request
+        if (($time = $_SERVER['REQUEST_TIME']) == '') {
+            $time = time();
+        }
+
+        // Get IP address
+        if (($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
+            $remote_addr = "REMOTE_ADDR_UNKNOWN";
+        }
+
+        // Get requested script
+        if (($request_uri = $_SERVER['REQUEST_URI']) == '') {
+            $request_uri = "REQUEST_URI_UNKNOWN";
+        }
+
+        // Format the date and time
+        $date = date("Y-m-d H:i:s", $time);
+
+        // Append to the log file
+        if ($fd = @fopen($logfile, "a")) {
+            fputcsv($fd, array($date, $remote_addr, $request_uri, $message));
+            fclose($fd);
+        }
     }
 
-    // Get IP address
-    if( ($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
-        $remote_addr = "REMOTE_ADDR_UNKNOWN";
+    if ($globalConfig['LogsDBType'] == '2' or $globalConfig['LogsDBType'] == '3') {
+
+        // Get time of request
+        if (($time = $_SERVER['REQUEST_TIME']) == '') {
+            $time = time();
+        }
+
+        // Get IP address
+        if (($remote_addr = $_SERVER['REMOTE_ADDR']) == '') {
+            $remote_addr = "REMOTE_ADDR_UNKNOWN";
+        }
+
+        // Get requested script
+        if (($request_uri = $_SERVER['REQUEST_URI']) == '') {
+            $request_uri = "REQUEST_URI_UNKNOWN";
+        }
+
+        // Format the date and time
+        $date = date("Y-m-d H:i:s", $time);
+
+        $mysqli = new mysqli($globalConfig['LogsDBHost'], $globalConfig['LogsDBUser'], $globalConfig['LogsDBPassword'], $globalConfig['LogsDBName'], $globalConfig['LogsDBPort']);
+
+        $mysqli->query("INSERT INTO  zendesk_integrations_logs_callback (
+`CREATEDON` ,
+`IP` ,
+`URL` ,
+`CALLBACK` ,
+`TYPE` ,
+`SUBDOMAIN` ,
+`EVENT_TYPE_ID`
+)
+VALUES (
+'" . $date . "',  '" . $remote_addr . "',  '" . $request_uri . "', '" . $message . "',  'StackExchange',  '" . json_decode($message, true)['events'][0]['subdomain'] . "', '" . json_decode($message, true)['events'][0]['type_id'] . "');");
+
+        $mysqli->close();
     }
 
-    // Get requested script
-    if( ($request_uri = $_SERVER['REQUEST_URI']) == '') {
-        $request_uri = "REQUEST_URI_UNKNOWN";
-    }
-
-    // Format the date and time
-    $date = date("Y-m-d H:i:s", $time);
-
-    // Append to the log file
-    if($fd = @fopen($logfile, "a")) {
-        fputcsv($fd, array($date, $remote_addr, $request_uri, $message));
-        fclose($fd);
-    }
 }
