@@ -29,7 +29,7 @@ else write_log("Pull has been requested.");
 
 $state_compare = strtotime($state['last_comment_timestamp']);
 
-$url = 'https://api.stackexchange.com/2.2/questions?pagesize=30&order=desc&sort=activity&tagged='.$tag.'&site='.$site.'&filter=!)Rw3Me(KDfK7W6QoB49q8GC*&access_token='.$access_token.'&key='.$globalConfig['SEAPIKey'];
+$url = 'https://api.stackexchange.com/2.2/questions?pagesize=30&order=desc&sort=creation&tagged='.$tag.'&site='.$site.'&filter=!)Rw3Me(KDfK7W6QoB49q8GC*&access_token='.$access_token.'&key='.$globalConfig['SEAPIKey'];
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -71,7 +71,7 @@ foreach (array_reverse($questions->items) as $item) {
             "fields" => array(
                 array(
                     "id" => "subject",
-                    "value" => $item->title
+                    "value" => html_entity_decode($item->title, ENT_QUOTES)
                 ),
                 array(
                     "id" => "type",
