@@ -27,7 +27,7 @@ else write_log("Pull has been requested.");
 
 //$state = json_decode($_POST['state'], true)['last_comment_timestamp'];
 
-$state_compare = strtotime($state['last_comment_timestamp']);
+$state_compare = $state['last_comment_timestamp'];
 
 $url = 'https://api.stackexchange.com/2.2/questions?pagesize=30&order=desc&sort=creation&tagged='.$tag.'&site='.$site.'&filter=!)Rw3Me(KDfK7W6QoB49q8GC*&access_token='.$access_token.'&key='.$globalConfig['SEAPIKey'];
 $ch = curl_init();
@@ -58,15 +58,21 @@ foreach (array_reverse($questions->items) as $item) {
         $external_id=(string)$item->question_id;
         //$external_id=(string)rand(1,10000000);
 
+        //ADD LINK FOR JetBrains-owned integrations HACK TO BE ADDED TO OPTIONS SOON
+        $additional_info="";
+        if ($metadata['email']=="mikhail.vink@jetbrains.com" or $metadata['email']=="serge@jetbrains.com" or $metadata['email']=="mikhail.vink@gmail.com"){
+            $additional_info = "Ticket created from Stack Exchange URL <a href='".$item->link."'>".$item->link."</a><br/>--<br/>";
+        }
+
         $temp_array = array(
             "external_id" => $site . "_" . $external_id,
-            "message" => strip_tags($item->body_markdown),
-            "html_message" => $item->body,
+            "message" => strip_tags($additional_info.$item->body_markdown),
+            "html_message" => $additional_info.$item->body,
             "created_at" => date("Y-m-d\TH:i:s\Z", $item->creation_date),
             "author" => array(
                 "external_id" => (string)$item->owner->user_id,
                 "name" => html_entity_decode($item->owner->display_name, ENT_QUOTES),
-                "image_url" => ""//$item->owner->profile_image
+                "image_url" => $item->owner->profile_image
             ),
             "fields" => array(
                 array(
@@ -82,21 +88,23 @@ foreach (array_reverse($questions->items) as $item) {
         );
         array_push($pull_array_temp, $temp_array);
 
-        foreach ($item->answers as $answer){
-            $temp_array = array(
-                "external_id" => $site."_".(string)$answer->answer_id,
-                "message" => strip_tags($answer->body_markdown),
-                "html_message" => $answer->body,
-                "created_at" => date("Y-m-d\TH:i:s\Z", $answer->creation_date),
-                "parent_id" => $site."_".$external_id,
-                "author" => array(
-                    "external_id" => (string)$answer->owner->user_id,
-                    "name" => html_entity_decode($answer->owner->display_name,ENT_QUOTES),
-                    "image_url" => ""//$answer->owner->profile_image
-                ),
-                "allow_channelback" => $allow_channelback
-            );
-            array_push($pull_array_temp, $temp_array);
+        if (!empty($item->answers)) {
+            foreach ($item->answers as $answer) {
+                $temp_array = array(
+                    "external_id" => $site . "_" . (string)$answer->answer_id,
+                    "message" => strip_tags($answer->body_markdown),
+                    "html_message" => $answer->body,
+                    "created_at" => date("Y-m-d\TH:i:s\Z", $answer->creation_date),
+                    "parent_id" => $site . "_" . $external_id,
+                    "author" => array(
+                        "external_id" => (string)$answer->owner->user_id,
+                        "name" => html_entity_decode($answer->owner->display_name, ENT_QUOTES),
+                        "image_url" => $answer->owner->profile_image
+                    ),
+                    "allow_channelback" => $allow_channelback
+                );
+                array_push($pull_array_temp, $temp_array);
+            }
         }
 
         $last_comment_timestamp = $item->last_activity_date;
