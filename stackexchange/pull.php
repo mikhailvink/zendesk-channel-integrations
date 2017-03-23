@@ -61,7 +61,7 @@ foreach (array_reverse($questions->items) as $item) {
         //ADD LINK FOR JetBrains-owned integrations HACK TO BE ADDED TO OPTIONS SOON
         $additional_info="";
         if ($metadata['email']=="mikhail.vink@jetbrains.com" or $metadata['email']=="serge@jetbrains.com" or $metadata['email']=="mikhail.vink@gmail.com"){
-            $additional_info = "Ticket created from Stack Exchange URL <a href='".$item->link."'>".$item->link."</a><br/>--<br/>";
+            $additional_info = "<a href='".$item->link."'>".$item->link."</a><br/>";
         }
 
         $temp_array = array(
