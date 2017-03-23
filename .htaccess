@@ -25,3 +25,11 @@ RewriteRule ^integrations/stackexchange/dashboard stackexchange/dashboard.php [N
 RewriteRule ^integrations/stackexchange/callback stackexchange/callback.php [NC]
 RewriteRule ^integrations/stackexchange/proxy$ stackexchange/proxy.php [NC]
 RewriteRule ^integrations/stackexchange/se-logo.png stackexchange/se-logo.png [NC]
+
+#DOCKERHUB
+RewriteRule ^integrations/dockerhub/manifest.json$ dockerhub/manifest.php [NC]
+RewriteRule ^integrations/dockerhub/admin_ui$ dockerhub/admin_ui_oauth.php [NC]
+RewriteRule ^integrations/dockerhub/pull$ dockerhub/pull.php [NC]
+RewriteRule ^integrations/dockerhub/clickthrough dockerhub/clickthrough.php [NC]
+RewriteRule ^integrations/dockerhub/dashboard dockerhub/dashboard.php [NC]
+RewriteRule ^integrations/dockerhub/callback dockerhub/callback.php [NC]

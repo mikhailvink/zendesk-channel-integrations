@@ -1,0 +1,7 @@
+{
+  "channel_integrations": {
+    "zendesk_dockerhub_channel": {
+      "manifest_url": "https://zendesk.mvink.me/integrations/dockerhub/manifest.json"
+    }
+  }
+}

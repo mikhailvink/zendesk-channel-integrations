@@ -1,0 +1,16 @@
+{
+  "app": {
+    "description": "Integrate Docker Hub comments for repository with your Zendesk as a separate channel.",
+    "name": "Docker Hub for Zendesk"
+  },
+  "loading": "Welcome to the Docker Hub for Zendesk App",
+  "fetch": {
+    "done": "Good",
+    "fail": "Failed to fetch information from the server"
+  },
+  "id": "ID",
+  "email": "Email",
+  "name": "Name",
+  "role": "Role",
+  "groups": "Groups"
+}
