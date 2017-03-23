@@ -139,6 +139,9 @@ function write_log_callback($message)
 
         $mysqli = new mysqli($globalConfig['LogsDBHost'], $globalConfig['LogsDBUser'], $globalConfig['LogsDBPassword'], $globalConfig['LogsDBName'], $globalConfig['LogsDBPort']);
 
+        if (json_decode($message, true)['events'][0]['error']) $error=1;
+        else $error=0;
+
         $mysqli->query("INSERT INTO  zendesk_integrations_logs_callback (
 `CREATEDON` ,
 `IP` ,
@@ -146,10 +149,11 @@ function write_log_callback($message)
 `CALLBACK` ,
 `TYPE` ,
 `SUBDOMAIN` ,
-`EVENT_TYPE_ID`
+`EVENT_TYPE_ID`,
+`ERROR_FLAG`
 )
 VALUES (
-'" . $date . "',  '" . $remote_addr . "',  '" . $request_uri . "', '" . $message . "',  'YouTube',  '" . json_decode($message, true)['events'][0]['subdomain'] . "', '" . json_decode($message, true)['events'][0]['type_id'] . "');");
+'" . $date . "',  '" . $remote_addr . "',  '" . $request_uri . "', '" . addslashes($message) . "',  'YouTube',  '" . json_decode($message, true)['events'][0]['subdomain'] . "', '" . json_decode($message, true)['events'][0]['type_id'] . "', '".$error."');");
 
         $mysqli->close();
     }
