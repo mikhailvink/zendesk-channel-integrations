@@ -195,7 +195,7 @@ $(document).ready(function () {
     echo '>Full</option>
 <option value="read_only" ';
     if ($metadata['youtube_type'] == "read_only") echo 'selected';
-    echo '>Read Only</option>
+    echo ' disabled>Read Only (unfortunately deprecated by YouTube, choose FULL)</option>
 </select>
 </div>
 <a href="#" id="advanced">Show advanced configuration</a>
