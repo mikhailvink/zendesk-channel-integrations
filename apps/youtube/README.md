@@ -11,7 +11,7 @@ Integrate videos and channel comments from any YouTube channel into your Zendesk
 * Multiple channels supported: You can enable this integration to work with up to 25 YouTube channels at a time (can be increased in future).
 * Easy installation: Just install the application from Zendesk Marketplace to your instance, add contact information and channel - that's it!
 
-More information in [FAQ](https://zendesk.mvink.me/faq.htm)
+You can find more information and FAQ at [https://zendesk.mvink.me](https://zendesk.mvink.me)
 
 Please submit bug reports to [support@zendesk.mvink.me](mailto:support@zendesk.mvink.me)
 

@@ -1,5 +1,5 @@
 {
-  "name": "YouTube Comments",
+  "name": "Guide Comments",
   "author": {
     "name": "Mikhail Vink",
     "email": "support@zendesk.mvink.me",
@@ -7,7 +7,7 @@
   },
   "defaultLocale": "en",
   "private": false,
-  "version": "0.2.0",
+  "version": "0.1.0",
   "singleInstall": true,
   "requirementsOnly": true
 }

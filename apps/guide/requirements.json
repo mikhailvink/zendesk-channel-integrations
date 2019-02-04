@@ -1,0 +1,7 @@
+{
+  "channel_integrations": {
+    "zendesk_guide_channel": {
+      "manifest_url": "https://zendesk.mvink.me/integrations/guide/manifest.json"
+    }
+  }
+}

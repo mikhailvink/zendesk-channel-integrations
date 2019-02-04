@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 require_once '../config.php';
 require_once 'logs.php';
 $manifest_array = array(
-    "name" => "YouTube",
+    "name" => "YouTube Comments",
     "id" => "zendesk-youtube-integration",
     "author" => "Mikhail Vink",
     "version" => "v0.1.0",

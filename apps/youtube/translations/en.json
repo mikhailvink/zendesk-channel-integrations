@@ -1,9 +1,11 @@
 {
   "app": {
-    "description": "Integrate YouTube comments with your Zendesk as a separate channel.",
-    "name": "YouTube Integration"
+    "description": "Turn video & channel comments from YouTube channel into Zendesk tickets",
+    "name": "YouTube Comments",
+    "long_description": "Integrate videos and channel comments from any YouTube channel into your Zendesk turning them into tickets. Then simply address them taking advantage of Zendesk's views, macros, and triggers.\n\nFeatures:\n* All Channel's Videos Comments: This integration creates tickets for all YouTube channel comments and all comments of videos added under the channel.\n* Clickthrough support: Links to YouTube comment to be viewed on YouTube are added to every ticket created by the integration.\n* Channelback support: Answers from Zendesk are automatically replicated in YouTube as comments from your name (option to be selected in the settings).\n* Up to 100 tickets every 2 minutes: Integration is capable of turning 100 YouTube comments into tickets every 2 minutes (per configured channel).\n* Multiple channels supported: You can enable this integration to work with up to 25 YouTube channels at a time (can be increased in the future).\n* Easy installation: Just install the application from Zendesk Marketplace to your instance, add contact information and channel - that's it!\n\nYou can find more information and FAQ at [https://zendesk.mvink.me](https://zendesk.mvink.me)",
+    "installation_instructions": "To use the YouTube Comments Integration, you'll need to install the app from Zendesk's App Marketplace.\n\nTo install the YouTube Comments integration:\n\n* Click the Admin icon, then select Apps > Marketplace. Locate and click the YouTube icon.\n* Read the Overview, then click the Install app button in the upper right.\n* Edit the installation info if needed, and click the link to view the Zendesk Marketplace Terms of Use.\n* Click the Install button.\n* The integration is added to your Channel Integrations page. Click Channels > Channel Integrations to access it.\n\nConnecting your YouTube Channel Comments to the Integration:\n(please note that the following action should be performed in your Zendesk instance by a user with admin permissions)\n* Make sure you've navigated to Channels > Channel Integrations\n* Click \"Add Account\"\n* Provide all the necessary data\n* Click \"Save\"\n* Use \"Sign in with Google\" if needed, confirm permissions grant\n* Enjoy!\n\nAfter the integration is installed and configured, you can easily use it in triggers / views / etc."
   },
-  "loading": "Welcome to the YouTube Integration App",
+  "loading": "Welcome to the YouTube Comments Integration App",
   "fetch": {
     "done": "Good",
     "fail": "Failed to fetch information from the server"

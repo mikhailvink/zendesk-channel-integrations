@@ -1,9 +1,11 @@
 {
   "app": {
-    "description": "Integrate Docker Hub comments for repository with your Zendesk as a separate channel.",
-    "name": "Docker Hub for Zendesk"
+    "description": "Turn Docker Hub repository comments into Zendesk tickets",
+    "name": "Docker Hub Repository Comments",
+    "long_description": "Integrate comments from any Docker Hub repository into your Zendesk turning them into tickets. Then simply address them taking advantage of Zendesk's views, macros, and triggers.\n\nFeatures:\n\n* All comments for a repository: This integration creates tickets for all comments for a specified Docker Hub repository.\n* Clickthrough support: Links to Docker Hub comments on their source website are added to every ticket created by the integration.\n* Up to 100 tickets every 2 minutes: Integration is capable of turning 100 Docker Hub comments into tickets every 2 minutes (per configured repository).\n* Multiple repositories supported: You can enable this integration to work with any number of Docker Hub repositories at a time.\n* Easy installation: Just install the application from Zendesk Marketplace to your instance, add contact information and website/tag - that's it!\n\nMore information in [FAQ](https://zendesk.mvink.me/faq.htm)\n\nPlease submit bug reports to [support@zendesk.mvink.me](support@zendesk.mvink.me)",
+    "installation_instructions": "To use the Docker Hub Repository Comments Integration, you'll need to install the app from Zendesk's App Marketplace.\n\nTo install the Docker Hub Repository Comments channel integration:\n\n* Click the Admin icon, then select Apps > Marketplace. Locate and click the Docker Hub icon.\n* Read the Overview, then click the Install app button in the upper right.\n* Edit the installation info if needed, and click the link to view the Zendesk Marketplace Terms of Use.\n* Click the Install button.\n* The integration is added to your Channel Integrations page. Click Channels > Channel Integrations to access it.\n\nConnecting your Docker Hub repository to the Integration:\n\n* Make sure you've navigated to Channels > Channel Integrations\n* Click \"Add Account\"\n* Provide all the necessary data\n* Click \"Save\"\n* Enjoy!\n\nAfter the integration is installed and configured, you can easily use it in triggers / views / etc."
   },
-  "loading": "Welcome to the Docker Hub for Zendesk App",
+  "loading": "Welcome to the Docker Hub Repository Comments App",
   "fetch": {
     "done": "Good",
     "fail": "Failed to fetch information from the server"

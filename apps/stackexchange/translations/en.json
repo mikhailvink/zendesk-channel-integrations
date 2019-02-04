@@ -1,9 +1,11 @@
 {
   "app": {
-    "description": "Integrate Stack Exchange posts by tag with your Zendesk as a separate channel.",
-    "name": "Stack for Zendesk"
+    "description": "Turn Stack Exchange / Stack Overflow questions into Zendesk tickets",
+    "name": "Stack Exchange Questions",
+    "long_description": "Integrate questions from any Stack Exchange website (such as Stack Overflow or Server Fault) by tag into your Zendesk turning them into tickets. Then simply address them taking advantage of Zendesk's views, macros, and triggers.\n\nFeatures:\n\n* All Questions by Tag: This integration creates tickets for all questions by specific Stack Exchange tag.\n* Clickthrough support: Links to Stack Exchange questions and answers on their source websites are added to every ticket created by integration.\n* Channelback support: Answer from Zendesk is automatically replicated in Stack Exchange as answers from your name (option to be selected in settings, single name per tag).\n* Up to 100 tickets every 2 minutes: Integration is capable of turning 100 Stack Exchange questions/answers into tickets every 2 minutes (per configured tag, answers are added to the questions they belong to).\n* Multiple tags & websites supported: You can enable this integration to work with any number of Stack Exchange websites and tags at a time.\n* Easy installation: Just install the application from Zendesk Marketplace to your instance, add contact information and website/tag - that's it!\n\nMore information in [FAQ](https://zendesk.mvink.me/faq.htm)\n\nPlease submit bug reports to [support@zendesk.mvink.me](mailto:support@zendesk.mvink.me)",
+    "installation_instructions": "To use the Stack Exchange Questions Integration, you'll need to install the app from Zendesk's App Marketplace.\n\nTo install the Stack Exchange Questions channel integration:\n\n* Click the Admin icon, then select Apps > Marketplace. Locate and click the Stack Exchange icon.\n* Read the Overview, then click the Install app button in the upper right.\n* Edit the installation info if needed, and click the link to view the Zendesk Marketplace Terms of Use.\n* Click the Install button.\n* The integration is added to your Channel Integrations page. Click Channels > Channel Integrations to access it.\n\nConnecting your Stack Exchange tag to the Integration:\n\n* Make sure you've navigated to Channels > Channel Integrations\n* Click \"Add Account\"\n* Provide all the necessary data\n* Click \"Save\"\n* Use \"Sign in with Stack Exchange\", confirm permissions grant\n* Enjoy!\n\nAfter the integration is installed and configured, you can easily use it in triggers / views / etc."
   },
-  "loading": "Welcome to the Stack for Zendesk App",
+  "loading": "Welcome to the Stack Exchange Questions App",
   "fetch": {
     "done": "Good",
     "fail": "Failed to fetch information from the server"

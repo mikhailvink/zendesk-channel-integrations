@@ -1,0 +1,18 @@
+{
+  "app": {
+    "description": "Turn your Zendesk Guide comments on posts and articles into Zendesk tickets",
+    "name": "Guide Comments",
+    "long_description": "Integrate comments for your Zendesk community or knowledge base into your Zendesk turning them into tickets. Then simply address them taking advantage of Zendesk's views, macros, and triggers.\n\nFeatures:\n\n* All Comments by Community Topic or Articles Section: This integrations creates tickets for all comments left in the Zendesk community or knowledge base.\n* Clickthrough support: Links to Zendesk Community posts and Knowledge Base articles are added to every ticket created by integration.\n* Up to 100 tickets every 2 minutes: Integration is capable of turning 100 comments into tickets every 2 minutes (per configured topic).\n* Multiple community topics, sections and users supported: You can enable this integration to work with any number of community topics or knowledge base sections at a time.\n* Easy installation: Just install the application from Zendesk Marketplace to your instance, add contact information and topics - that's it!\n\nMore information in [FAQ](https://zendesk.mvink.me/faq.htm)\n\nPlease submit bug reports to [support@zendesk.mvink.me](mailto:support@zendesk.mvink.me)",
+    "installation_instructions": "To use the Guide Comments Integration, you'll need to install the app from Zendesk's App Marketplace.\n\nTo install the Guide Comments channel integration:\n\n* Click the Admin icon, then select Apps > Marketplace. Locate and click the Guide icon.\n* Read the Overview, then click the Install app button in the upper right.\n* Edit the installation info if needed, and click the link to view the Zendesk Marketplace Terms of Use.\n* Click the Install button.\n* The integration is added to your Channel Integrations page. Click Channels > Channel Integrations to access it.\n\nConnecting your Guide community or knowledge base to the Integration:\n\n* Make sure you've navigated to Channels > Channel Integrations\n* Click \"Add Account\"\n* Provide all the necessary data\n* Click \"Save\"\n* Enjoy!\n\nAfter the integration is installed and configured, you can easily use it in triggers / views / etc."
+  },
+  "loading": "Welcome to the Guide Comments App for Zendesk",
+  "fetch": {
+    "done": "Good",
+    "fail": "Failed to fetch information from the server"
+  },
+  "id": "ID",
+  "email": "Email",
+  "name": "Name",
+  "role": "Role",
+  "groups": "Groups"
+}

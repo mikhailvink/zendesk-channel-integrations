@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Zendesk Channel Integration for YouTube and Stack Exchange - FAQ</title>
+    <title>Zendesk Channel Integration for YouTube, Stack Exchange, Docker Hub and Guide - FAQ</title>
 
     <!-- Bootstrap -->
     <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,10 +29,10 @@
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
             i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
             a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
+                m = s.getElementsByTagName(o)[0];
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
@@ -53,7 +53,7 @@
                 <li role="presentation"><a href="/contact.htm">Contact</a></li>
             </ul>
         </nav>
-        <h3 class="text-muted">Zendesk Channel Integration<br/>for YouTube and Stack Exchange<br/>FAQ</h3>
+        <h3 class="text-muted">Zendesk Channel Integration<br/>FAQ</h3>
     </div>
     <div>
         <div class="featurette">
@@ -63,7 +63,18 @@
         </div>
         <div class="featurette">
             <h3 class="featurette-heading">What the Stack Exchange integration does?</h3>
-            <p class="lead">Stack Exchange Channel Integration for Zendesk turns Stack Exchange questions by tag into Zendesk tickets in your Zendesk instance.</p>
+            <p class="lead">Stack Exchange Channel Integration for Zendesk turns Stack Exchange questions by tag into
+                Zendesk tickets in your Zendesk instance.</p>
+        </div>
+        <div class="featurette">
+            <h3 class="featurette-heading">What the Docker Hub integration does?</h3>
+            <p class="lead">Docker Hub Repositories Comments Integration for Zendesk turns Docker Hub comments on
+                repositories into Zendesk tickets in your Zendesk instance.</p>
+        </div>
+        <div class="featurette">
+            <h3 class="featurette-heading">What the Guide integration does?</h3>
+            <p class="lead">Guide Comments Integration for Zendesk turns Guide Community or Knowledge Base comments into
+                Zendesk tickets in your Zendesk instance.</p>
         </div>
         <div class="featurette">
             <h3 class="featurette-heading">How is it implemented?</h3>
@@ -96,7 +107,7 @@
             <br>
             Connecting your YouTube Channel to the Integration:<br>
             <ul>
-                <li>Make sure you've navigated to Channels > Channel Integrations
+                <li>Make sure you've navigated to Channels > Channel Integrations</li>
                 <li>Click "Add Account"</li>
                 <li> Provide all the necessary data</li>
                 <li> Click "Save"</li>
@@ -129,7 +140,7 @@
             <br>
             Connecting your Stack Exchange tag to the Integration:<br>
             <ul>
-                <li>Make sure you've navigated to Channels > Channel Integrations
+                <li>Make sure you've navigated to Channels > Channel Integrations</li>
                 <li>Click "Add Account"</li>
                 <li> Provide all the necessary data</li>
                 <li> Click "Save"</li>
@@ -141,9 +152,73 @@
             </p>
         </div>
         <div class="featurette">
+            <h3 class="featurette-heading">How can I install the Docker Hub integration?</h3>
+            <p class="lead">
+                To use the Docker Hub Repository Comments Integration, you'll need to install the app from Zendesk's App
+                Marketplace.<br><br>
+
+                To install the Docker Hub Repository Comments channel integration:
+            <ul>
+                <li>Click the Admin icon, then select Apps > Marketplace. Locate and click the Docker Hub icon.</li>
+                <li>Read the Overview, then click the Install app button in the upper right.</li>
+                <li>Edit the installation info if needed, and click the link to view the Zendesk Marketplace Terms of
+                    Use.
+                </li>
+                <li>Click the Install button.</li>
+                <li>The integration is added to your Channel Integrations page. Click Channels > Channel Integrations to
+                    access it.
+                </li>
+            </ul>
+            <br>
+            Connecting your Docker Hub repository to the Integration:<br>
+            <ul>
+                <li>Make sure you've navigated to Channels > Channel Integrations</li>
+                <li>Click "Add Account"</li>
+                <li>Provide all the necessary data</li>
+                <li>Click "Save"</li>
+                <li>Enjoy!</li>
+            </ul>
+            <br>
+            After the integration is installed and configured, you can easily use it in triggers / views / etc.
+            </p>
+        </div>
+        <div class="featurette">
+            <h3 class="featurette-heading">How can I install the Guide integration?</h3>
+            <p class="lead">
+                To use the Guide Comments Integration, you'll need to install the app from Zendesk's App
+                Marketplace.<br><br>
+
+                To install the Guide Comments channel integration:
+            <ul>
+                <li>Click the Admin icon, then select Apps > Marketplace. Locate and click the Guide icon.</li>
+                <li>Read the Overview, then click the Install app button in the upper right.</li>
+                <li>Edit the installation info if needed, and click the link to view the Zendesk Marketplace Terms of
+                    Use.
+                </li>
+                <li>Click the Install button.</li>
+                <li>The integration is added to your Channel Integrations page. Click Channels > Channel Integrations to
+                    access it.
+                </li>
+            </ul>
+            <br>
+            Connecting your Guide community or knowledge base to the Integration:<br>
+            <ul>
+                <li>Make sure you've navigated to Channels > Channel Integrations</li>
+                <li>Click "Add Account"</li>
+                <li>Provide all the necessary data</li>
+                <li>Click "Save"</li>
+                <li>Enjoy!</li>
+            </ul>
+            <br>
+            After the integration is installed and configured, you can easily use it in triggers / views / etc.
+            </p>
+        </div>
+        <div class="featurette">
             <h3 class="featurette-heading">License & Opensource</h3>
-            <p class="lead">The integration source code will be released publicly under MIT license and <a href="https://github.com/mikhailvink/zendesk-channel-integrations">is
-                published on GitHub</a>.</p>
+            <p class="lead">Most of the integration source code (at least for YouTube, Stack Exchange, Docker Hub) will
+                be released publicly under MIT license and <a
+                        href="https://github.com/mikhailvink/zendesk-channel-integrations">is
+                    published on GitHub</a>.</p>
         </div>
         <div class="featurette">
             <h3 class="featurette-heading">Contributions</h3>
@@ -193,15 +268,16 @@
             <p class="lead">Despite the fact that the developer of this integration works at <a
                     href="https://jetbrains.com">JetBrains</a> and initially this integration has been written for
                 JetBrains Zendesk Instance, JetBrains cannot hold any liability for the use of this integration, will
-                not take any responsibility and will not answer requests about it, it's not a product of JetBrains. It is
-                to be opensourced for the use and benefits of all Zendesk community.</p>
+                not take any responsibility and will not answer requests about it, it's not a product of JetBrains.</p>
         </div>
         <div class="featurette">
             <h3 class="featurette-heading">Will the integration become paid at some point?</h3>
             <p class="lead">We might consider building a paid version of the integration (on top of the free one) which
                 would then have additional features worth paying for, in addition to SLAs, guaranteed support and other
                 goodies, but we want basic
-                functionality to stay completely FREE of charge and open sourced for the benefit of community. Currently there are no defined plans
+                functionality to stay FREE of charge (at least for YouTube, Stack Exchange, Docker Hub) and some of it
+                open sourced for the benefit of community (at least YouTube, Stack Exchange, Docker Hub). Currently
+                there are no defined plans
                 to build a paid version. Donations are welcomed though (see the next item).</p>
         </div>
         <div class="featurette">
@@ -233,14 +309,16 @@
     </div>
     <footer class="footer">
         <ul class="nav nav-pills">
-            <li role="presentation"><a href="https://twitter.com/mikhail_vink" style="color:black;">&copy; 2017 Mikhail Vink</a>
+            <li role="presentation"><a href="https://twitter.com/mikhail_vink" style="color:black;">&copy; 2017 Mikhail
+                Vink</a>
             </li>
             <li role="presentation"><a href="/">Home</a></li>
             <li role="presentation"><a href="/faq.htm">FAQ</a></li>
             <li role="presentation"><a href="/legal.htm">Privacy Policy</a></li>
             <li role="presentation"><a href="/contact.htm">Contact</a></li>
         </ul>
-        Zendesk, YouTube, Stack Exchange and other logos copyright and trademarks belongs to their trademark holders. These integrations are built on top of respective platforms.
+        Zendesk, YouTube, Stack Exchange and other logos copyright and trademarks belongs to their trademark holders.
+        These integrations are built on top of respective platforms.
     </footer>
 
 </div> <!-- /container -->

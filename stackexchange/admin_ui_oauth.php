@@ -199,7 +199,7 @@ echo '</select>
 </div>
 <div class="form-group">
 <label class="control-label">Stack Exchange Site Tag: <span style="color:red;">*</span></label>
-<br>(please make sure to specify one tag which is avalailable for the Stack Exchange site you\'ve chosen in the previous field)
+<br>(please make sure to specify one tag (or use <b>;</b> delimiter to apply AND to specified tags) which is avalailable for the Stack Exchange site you\'ve chosen in the previous field)
 <input type="text" class="form-control" name="tag" id="tag" value="' . $metadata['tag'] . '">
 </div>
 <div class="form-group">
@@ -238,7 +238,7 @@ $( "#advanced" ).click(function() {
 </script>
 
 <div class="form-group">
-<label class="control-label" for="legal">I agree to subscribe to an email newsletter (sent in case of significant changes or news, you can unsubscribe at any time) and <a href="https://'.$globalConfig['Domain'].'/legal.html">accept privacy policy</a>: <span style="color:red;">*</span></label>
+<label class="control-label" for="legal">I agree to subscribe to an email newsletter (sent in case of significant changes or news, you can unsubscribe at any time) and <a href="https://'.$globalConfig['Domain'].'/legal.htm">accept privacy policy</a>: <span style="color:red;">*</span></label>
 <input type="checkbox" id="legal" name="legal" value="true" ';
     if ($metadata['legal'] == "true") echo 'checked';
     echo '>

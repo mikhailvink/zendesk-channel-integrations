@@ -162,7 +162,7 @@ $( "#advanced" ).click(function() {
 </script>
 
 <div class="form-group">
-<label class="control-label" for="legal">I agree to subscribe to an email newsletter (sent in case of significant changes or news, you can unsubscribe at any time) and <a href="https://'.$globalConfig['Domain'].'/legal.html">accept privacy policy</a>: <span style="color:red;">*</span></label>
+<label class="control-label" for="legal">I agree to subscribe to an email newsletter (sent in case of significant changes or news, you can unsubscribe at any time) and <a href="https://'.$globalConfig['Domain'].'/legal.htm">accept privacy policy</a>: <span style="color:red;">*</span></label>
 <input type="checkbox" id="legal" name="legal" value="true" ';
     if ($metadata['legal'] == "true") echo 'checked';
     echo '>
