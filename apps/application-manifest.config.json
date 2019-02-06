@@ -1,0 +1,256 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "Zendesk Application Manifest",
+  "required": [
+    "name",
+    "author"
+  ],
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": [
+        "My App"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "author": {
+      "$id": "#/properties/author",
+      "type": "object",
+      "title": "The Author Schema",
+      "required": [
+        "name",
+        "email",
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/author/properties/name",
+          "type": "string",
+          "title": "The Name Schema",
+          "default": "",
+          "examples": [
+            "Jean Thompson"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "email": {
+          "$id": "#/properties/author/properties/email",
+          "type": "string",
+          "title": "The Email Schema",
+          "default": "",
+          "examples": [
+            "support@omniwear.com"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "url": {
+          "$id": "#/properties/author/properties/url",
+          "type": "string",
+          "title": "The Url Schema",
+          "default": "",
+          "examples": [
+            "https://www.omniwear.com/profiles/jthompson"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    },
+    "defaultLocale": {
+      "$id": "#/properties/defaultLocale",
+      "type": "string",
+      "title": "The Defaultlocale Schema",
+      "default": "",
+      "examples": [
+        "en"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "private": {
+      "$id": "#/properties/private",
+      "type": "boolean",
+      "title": "The Private Schema",
+      "default": false,
+      "examples": [
+        false
+      ]
+    },
+    "location": {
+      "$id": "#/properties/location",
+      "type": "object",
+      "title": "The Location Schema",
+      "required": [
+        "support"
+      ],
+      "properties": {
+        "support": {
+          "$id": "#/properties/location/properties/support",
+          "type": "object",
+          "title": "The Support Schema",
+          "required": [
+            "background",
+            "ticket_sidebar",
+            "top_bar"
+          ],
+          "properties": {
+            "background": {
+              "$id": "#/properties/location/properties/support/properties/background",
+              "type": "string",
+              "title": "The Background Schema",
+              "default": "",
+              "examples": [
+                "assets/iframe.html"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "ticket_sidebar": {
+              "$id": "#/properties/location/properties/support/properties/ticket_sidebar",
+              "type": "object",
+              "title": "The Ticket_sidebar Schema",
+              "required": [
+                "autoLoad"
+              ],
+              "properties": {
+                "autoLoad": {
+                  "$id": "#/properties/location/properties/support/properties/ticket_sidebar/properties/autoLoad",
+                  "type": "boolean",
+                  "title": "The Autoload Schema",
+                  "default": false,
+                  "examples": [
+                    false
+                  ]
+                }
+              }
+            },
+            "top_bar": {
+              "$id": "#/properties/location/properties/support/properties/top_bar",
+              "type": "object",
+              "title": "The Top_bar Schema",
+              "required": [
+                "autoHide",
+                "url"
+              ],
+              "properties": {
+                "autoHide": {
+                  "$id": "#/properties/location/properties/support/properties/top_bar/properties/autoHide",
+                  "type": "boolean",
+                  "title": "The Autohide Schema",
+                  "default": false,
+                  "examples": [
+                    true
+                  ]
+                },
+                "url": {
+                  "$id": "#/properties/location/properties/support/properties/top_bar/properties/url",
+                  "type": "string",
+                  "title": "The Url Schema",
+                  "default": "",
+                  "examples": [
+                    "assets/top_bar.html"
+                  ],
+                  "pattern": "^(.*)$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "domainWhitelist": {
+      "$id": "#/properties/domainWhitelist",
+      "type": "array",
+      "title": "The Domainwhitelist Schema",
+      "items": {
+        "$id": "#/properties/domainWhitelist/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": [
+          "omniwear.com"
+        ],
+        "pattern": "^(.*)$"
+      }
+    },
+    "parameters": {
+      "$id": "#/properties/parameters",
+      "type": "array",
+      "title": "The Parameters Schema",
+      "items": {
+        "$id": "#/properties/parameters/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "name",
+          "type",
+          "secure",
+          "required"
+        ],
+        "properties": {
+          "name": {
+            "$id": "#/properties/parameters/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "token"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "type": {
+            "$id": "#/properties/parameters/items/properties/type",
+            "type": "string",
+            "title": "The Type Schema",
+            "default": "",
+            "examples": [
+              "text"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "secure": {
+            "$id": "#/properties/parameters/items/properties/secure",
+            "type": "boolean",
+            "title": "The Secure Schema",
+            "default": false,
+            "examples": [
+              true
+            ]
+          },
+          "required": {
+            "$id": "#/properties/parameters/items/properties/required",
+            "type": "boolean",
+            "title": "The Required Schema",
+            "default": false,
+            "examples": [
+              true
+            ]
+          }
+        }
+      }
+    },
+    "version": {
+      "$id": "#/properties/version",
+      "type": "string",
+      "title": "The Version Schema",
+      "default": "",
+      "examples": [
+        "1.0"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "frameworkVersion": {
+      "$id": "#/properties/frameworkVersion",
+      "type": "string",
+      "title": "The Frameworkversion Schema",
+      "default": "",
+      "examples": [
+        "2.0"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}
