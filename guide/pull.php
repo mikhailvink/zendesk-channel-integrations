@@ -75,6 +75,9 @@ if ($metadata['content_type'] == 'community') {
 
             $html_message = $item->details;
             if ($html_message == '') $html_message = ' ';
+	
+			$image_url = (string)$posts->users[array_search($item->author_id, array_column($posts->users, 'id'))]->photo->content_url;
+			if ($image_url == '') $image_url = ' ';
 
             $temp_array = array(
                 "external_id" => $external_id,
@@ -84,8 +87,8 @@ if ($metadata['content_type'] == 'community') {
                 "author" => array(
                     "external_id" => (string)$posts->users[array_search($item->author_id, array_column($posts->users, 'id'))]->id,
                     "name" => html_entity_decode($posts->users[array_search($item->author_id, array_column($posts->users, 'id'))]->name, ENT_QUOTES),
-                    "image_url" => $posts->users[array_search($item->author_id, array_column($posts->users, 'id'))]->photo->content_url
-                ),
+                    "image_url" => $image_url
+				),
                 "fields" => array(
                     array(
                         "id" => "subject",
@@ -108,6 +111,9 @@ if ($metadata['content_type'] == 'community') {
 
                 $html_message = $item_comments->body;
                 if ($html_message == '') $html_message = ' ';
+	
+				$image_url = (string)$comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->photo->content_url;
+				if ($image_url == '') $image_url = ' ';
 
                 $temp_array = array(
                     "external_id" => $external_id,
@@ -118,7 +124,7 @@ if ($metadata['content_type'] == 'community') {
                     "author" => array(
                         "external_id" => (string)$comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->id,
                         "name" => html_entity_decode($comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->name, ENT_QUOTES),
-                        "image_url" => $comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->photo->content_url
+                        "image_url" => $image_url
                     ),
                     "allow_channelback" => $channelback
                 );
@@ -167,8 +173,12 @@ if ($metadata['content_type'] == 'community') {
             $external_id = "https://" . $metadata['hc_domain'] . "/hc/" . $metadata['hc_locale'] . "/articles/" . $item->id . $add_external_id;
 
             $item->body="<h1>".$item->title."</h1>".$item->body;
+            
             $message = strip_tags($item->body);
             if ($message == '') $message = ' ';
+	
+			$image_url = (string)$articles->users[array_search($item->author_id, array_column($articles->users, 'id'))]->photo->content_url;
+			if ($image_url == '') $image_url = ' ';
 
             $temp_array = array(
                 "external_id" => $external_id,
@@ -178,7 +188,7 @@ if ($metadata['content_type'] == 'community') {
                 "author" => array(
                     "external_id" => (string)$articles->users[array_search($item->author_id, array_column($articles->users, 'id'))]->id,
                     "name" => html_entity_decode($articles->users[array_search($item->author_id, array_column($articles->users, 'id'))]->name, ENT_QUOTES),
-                    "image_url" => $articles->users[array_search($item->author_id, array_column($articles->users, 'id'))]->photo->content_url
+                    "image_url" => $image_url
                 ),
                 "allow_channelback" => $channelback
             );
@@ -191,6 +201,9 @@ if ($metadata['content_type'] == 'community') {
 
                 $message = strip_tags($item_comments->body);
                 if ($message == '') $message = ' ';
+	
+				$image_url = (string)$comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->photo->content_url;
+				if ($image_url == '') $image_url = ' ';
 
                 $temp_array = array(
                     "external_id" => $external_id,
@@ -201,7 +214,7 @@ if ($metadata['content_type'] == 'community') {
                     "author" => array(
                         "external_id" => (string)$comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->id,
                         "name" => html_entity_decode($comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->name, ENT_QUOTES),
-                        "image_url" => $comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->photo->content_url
+                        "image_url" => $image_url
                     ),
                     "allow_channelback" => $channelback
                 );
