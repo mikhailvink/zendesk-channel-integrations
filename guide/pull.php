@@ -82,8 +82,8 @@ if ($metadata['content_type'] == 'community') {
 
             $temp_array = array(
                 "external_id" => $external_id,
-                "message" => substr((string)$additional_info.$message,0,65536),
-                "html_message" => substr((string)$additional_info.$html_message,0,65536),
+                "message" => utf8_encode(substr((string)$additional_info.$message,0,60000)),
+                "html_message" => utf8_encode(substr((string)$additional_info.$html_message,0,60000)),
                 "created_at" => $item->created_at,
                 "author" => array(
                     "external_id" => (string)$posts->users[array_search($item->author_id, array_column($posts->users, 'id'))]->id,
@@ -119,8 +119,8 @@ if ($metadata['content_type'] == 'community') {
                 $temp_array = array(
                     "external_id" => $external_id,
                     "parent_id" => $parent_id,
-                    "message" => substr((string)$message,0,65536),
-                    "html_message" => substr((string)$html_message,0,65536),
+                    "message" => utf8_encode(substr((string)$message,0,60000)),
+                    "html_message" => utf8_encode(substr((string)$html_message,0,60000)),
                     "created_at" => $item_comments->created_at,
                     "author" => array(
                         "external_id" => (string)$comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->id,
@@ -186,8 +186,8 @@ if ($metadata['content_type'] == 'community') {
 
             $temp_array = array(
                 "external_id" => $external_id,
-                "message" => substr((string)$message,0,65536),
-                "html_message" => substr($item->body,0,65536),
+                "message" => utf8_encode(substr((string)$message,0,60000)),
+                "html_message" => utf8_encode(substr($item->body,0,60000)),
                 "created_at" => $item->created_at,
                 "author" => array(
                     "external_id" => (string)$articles->users[array_search($item->author_id, array_column($articles->users, 'id'))]->id,
@@ -212,8 +212,8 @@ if ($metadata['content_type'] == 'community') {
                 $temp_array = array(
                     "external_id" => $external_id,
                     "parent_id" => $parent_id,
-                    "message" => substr((string)$message,0,65536),
-                    "html_message" => substr($item_comments->body,0,65536),
+                    "message" => utf8_encode(substr((string)$message,0,60000)),
+                    "html_message" => utf8_encode(substr($item_comments->body,0,60000)),
                     "created_at" => $item_comments->created_at,
                     "author" => array(
                         "external_id" => (string)$comments->users[array_search($item_comments->author_id, array_column($comments->users, 'id'))]->id,
@@ -238,4 +238,3 @@ $pull_array['state'] = urlencode(json_encode(array(
 echo json_encode($pull_array);
 if ($metadata['debugging'] == true) write_log("ADVANCED DEBUGGING: Pull has been returned: " . json_encode($pull_array));
 else write_log("Pull has been returned");
-
