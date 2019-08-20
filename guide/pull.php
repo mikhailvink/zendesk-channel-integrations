@@ -36,6 +36,7 @@ if ($metadata['content_type'] == 'community') {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 900);
+    curl_setopt($ch, CURLOPT_USERPWD, $metadata['token_username'] . ':' . $metadata['token_api']);
     $data = curl_exec($ch);
     $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
@@ -136,6 +137,8 @@ if ($metadata['content_type'] == 'community') {
     }
 } elseif ($metadata['content_type'] == 'kb') {
     $url = 'https://' . $metadata['hc_domain'] . '/api/v2/help_center/'.$metadata['hc_locale'].'/sections/'.$metadata['topic_section'].'/articles.json?sort_by=updated_at&sort_order=desc&include=users';
+    write_log(sprintf("Trying url: %s", $url));
+
     $pull_array = array();
     $pull_array_temp = array();
     header('Content-type: application/json; charset=utf-8');
@@ -145,6 +148,7 @@ if ($metadata['content_type'] == 'community') {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 900);
+    curl_setopt($ch, CURLOPT_USERPWD, $metadata['token_username'] . ':' . $metadata['token_api']);
     $data = curl_exec($ch);
     $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
