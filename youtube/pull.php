@@ -35,10 +35,14 @@ if ($oauth_token_expires - time() < 180) {
     ]);
 
     $grant = new League\OAuth2\Client\Grant\RefreshToken();
-    $token = $provider->getAccessToken($grant, ['refresh_token' => $refresh_token]);
-    $_SESSION['token'] = serialize($token);
-    $oauth_token = $token->getToken();
-    $oauth_token_expires = $token->getExpires();
+    try {
+        $token = $provider->getAccessToken($grant, ['refresh_token' => $refresh_token]);
+        $_SESSION['token'] = serialize($token);
+        $oauth_token = $token->getToken();
+        $oauth_token_expires = $token->getExpires();
+    } catch (\Exception $e) {
+        write_log(sprintf("cannot get access token: %s", $e->getMessage()));
+    }
 }
 
 //$state = json_decode($_POST['state'], true)['last_comment_timestamp'];
