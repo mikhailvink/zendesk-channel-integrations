@@ -48,7 +48,7 @@ if (isset($_POST['save']) and $_POST['save'] == '1') {
         $state_array = json_decode(urldecode($_SESSION['form_data']['state']), true);
         if (!$state_array['last_comment_timestamp']) $state_array['last_comment_timestamp'] = 0;
         $state = urlencode(json_encode($state_array));
-        if ($metadata_array['debugging']==true) write_log("ADVANCED DEBUGGING: Saving config data to Zendesk, return_url=" . $_SESSION['form_data']['return_url'] . ". State: " . $state . ", Metadata: " . $metadata . ", Name: " . $_SESSION['form_data']['int_name']);
+        if ($metadata_array['debugging']==true) write_log("ADVANCED DEBUGGING: Saving config data to Zendesk, return_url=" . $_SESSION['form_data']['return_url'] . ". State: " . $state . ", Metadata: " . $metadata . ", Name: " . $_SESSION['form_data']['name']);
         else write_log("Saving config data to Zendesk");
         echo '
           <form id="finish"
@@ -56,7 +56,7 @@ if (isset($_POST['save']) and $_POST['save'] == '1') {
                 action="' . $_SESSION['form_data']['return_url'] . '">
             <input type="hidden"
                    name="name"
-                   value="' . $_SESSION['form_data']['int_name'] . '">
+                   value="' . $_SESSION['form_data']['name'] . '">
             <input type="hidden"
                    name="metadata"
                    value=\'' . $metadata . '\'>
@@ -96,7 +96,7 @@ $(document).ready(function () {
             last_name: {
                 required: true
             },
-            int_name: {
+            name: {
                 required: true
             },
             repository: {
@@ -118,7 +118,7 @@ $(document).ready(function () {
 <form action="https://'.$globalConfig['Domain'].'/integrations/dockerhub/admin_ui?save=1" method="post" enctype="application/x-www-form-urlencoded" id="config-form">
 <div class="form-group">
 <label class="control-label">Integration Name: <span style="color:red;">*</span></label>
-<input type="text" class="form-control" name="int_name" id="int_name" value="' . $zendesk_data['name'] . '">
+<input type="text" class="form-control" name="name" id="name" value="' . $zendesk_data['name'] . '">
 </div>
 <div class="form-group">
 <label class="control-label">First Name: <span style="color:red;">*</span></label>
